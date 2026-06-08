@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "devtools",
+  "description": "Workflow skills for the Meta Developer Tools MCP — app management, webhooks, compliance, app review, and API health monitoring on the Meta Developer Platform.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Meta Platforms, Inc."
+  },
+  "homepage": "https://developers.facebook.com/documentation/mcp/devtools-mcp",
+  "repository": "https://github.com/facebook/agentic-tools",
+  "license": "MIT",
+  "keywords": [
+    "meta",
+    "devtools",
+    "webhooks",
+    "graph-api",
+    "app-review",
+    "compliance",
+    "api-health",
+    "developer-platform"
+  ],
+  "skills": [
+    "./skills/"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if test -x \"${CLAUDE_PLUGIN_ROOT}/hooks/session-init.sh\"; then \"${CLAUDE_PLUGIN_ROOT}/hooks/session-init.sh\"; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

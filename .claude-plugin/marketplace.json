@@ -1,0 +1,28 @@
+{
+  "name": "facebook",
+  "owner": {
+    "name": "Meta Platforms, Inc."
+  },
+  "plugins": [
+    {
+      "name": "devtools",
+      "description": "Workflow skills for the Meta Developer Tools MCP — app management, webhooks, compliance, app review, and API health monitoring on the Meta Developer Platform.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Meta Platforms, Inc."
+      },
+      "homepage": "https://developers.facebook.com/documentation/mcp/devtools-mcp",
+      "source": "./plugins/devtools",
+      "keywords": [
+        "meta",
+        "devtools",
+        "webhooks",
+        "graph-api",
+        "app-review",
+        "compliance",
+        "api-health",
+        "developer-platform"
+      ]
+    }
+  ]
+}

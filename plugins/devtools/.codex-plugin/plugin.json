@@ -1,0 +1,15 @@
+{
+  "name": "devtools",
+  "version": "0.1.0",
+  "description": "Workflow skills for the Meta Developer Tools MCP — app management, webhooks, compliance, app review, and API health monitoring on the Meta Developer Platform.",
+  "skills": "./skills/",
+  "author": {
+    "name": "Meta Platforms, Inc."
+  },
+  "license": "MIT",
+  "interface": {
+    "displayName": "Meta Developer Tools",
+    "shortDescription": "App management, webhooks, compliance, app review, and API health on the Meta Developer Platform.",
+    "category": "DevTools"
+  }
+}

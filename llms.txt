@@ -1,0 +1,33 @@
+# Agentic Tools
+
+> Workflow skills for the Meta Developer Tools MCP server — manage apps, webhooks, compliance, and app review on the Meta Developer Platform.
+
+## MCP Tools
+
+The skills call the Developer Tools MCP server. The current tool list is discovered from the MCP server when it's connected — see the [Developer Tools MCP documentation](https://developers.facebook.com/documentation/mcp/devtools-mcp) for reference.
+
+## Workflows
+
+### App Health Check
+Identify the app first — accept an app name or app_id, resolving a name to its app_id via devtools_app_list. Then run basic_settings, security, compliance status, and app review status in parallel for that app. Produce an actionable report with prioritized action items.
+
+### Webhook Setup
+List available topics, collect subscription details (topic, fields, callback_url, verify_token), subscribe, then send a test payload to verify delivery.
+
+### App Review Prep
+Check review status, requirements, privileges, and submission history. Check compliance for blockers. Produce a readiness verdict.
+
+### Debug Webhooks
+Inspect active subscriptions, send test payloads, diagnose common issues (missing subscriptions, wrong fields, unreachable callback URL).
+
+### Compliance Check
+Pull compliance status, app settings, and DPO info. Categorize findings by severity (violations, required actions, recommendations) and provide remediation guidance.
+
+### API Health
+Check rate limits, call volume (with optional endpoint filter and lookback window), and API deprecations. Rate limit thresholds: 80% = warning, 100% = throttled. Prioritize action items by severity.
+
+### API Integration
+Guide a developer through setting up a Meta API integration (WhatsApp, Instagram, Messenger, Pages, Ads, etc.). Run multiple layered doc searches covering overview, authentication, permissions, endpoints, webhooks, and code examples. Cross-reference app permissions if app_id is provided. Produce a complete integration guide with prerequisites, setup steps, code examples, and common pitfalls.
+
+### Search Docs
+Search Meta developer documentation with refined queries. Synthesize answers from results rather than just listing links.

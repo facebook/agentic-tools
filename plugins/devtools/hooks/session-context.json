@@ -1,0 +1,6 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "SessionStart",
+    "additionalContext": "When the user invokes any Developer Tools skill (app-health-check, webhook-setup, app-review-prep, debug-webhooks, compliance-check, api-health, api-integration, search-docs), ensure the Developer Tools MCP server is connected. If the Developer Tools MCP tools are not available, instruct the user to run `/mcp` and connect to the devtools server first."
+  }
+}
