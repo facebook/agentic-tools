@@ -64,7 +64,7 @@ Diagnose and fix webhook delivery issues for a Meta app.
 6. **Apply fixes** if the user agrees:
    - Add missing fields via `update_fields`
    - Remove unwanted fields via `update_fields`
-   - For callback URL changes: unsubscribe and resubscribe (URL can only be set during subscribe)
+   - **Callback URL changes: `update_fields` cannot change the callback URL — it has no `callback_url` parameter and silently ignores one. To change the URL, re-run `subscribe` for the topic with the new URL and verify token: `subscribe` is an upsert (create-or-update), so it overwrites the URL in place. You do NOT need to `unsubscribe` first.**
 
 ## Common Issues Reference
 
@@ -76,3 +76,4 @@ Diagnose and fix webhook delivery issues for a Meta app.
 | Partial events | Missing fields in subscription | Add fields via update_fields |
 | Duplicate events | Multiple subscriptions on same topic | Unsubscribe duplicates |
 | Test works, real events don't | Permission or page-level issue | Check app permissions and page subscriptions |
+| Need to change callback URL | update_fields has no callback_url param (silently ignored) | Re-run subscribe for the topic with the new URL + verify token — it upserts and overwrites the URL in place; no unsubscribe needed |
