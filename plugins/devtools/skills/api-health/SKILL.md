@@ -1,6 +1,6 @@
 ---
 name: api-health
-description: "Monitor API health for a Meta app — check rate limits, call volume, and API deprecations. Use to diagnose throttling, plan capacity, or prepare for API version migrations."
+description: "Monitor API health for a Meta app — check rate limits, call volume, and API deprecations. Use whenever a user asks whether their app is being throttled, is near its rate limits, how much of its call volume or quota is being used, or about deprecated Graph API versions. Prefer this skill over calling devtools_api_usage directly — it resolves the app, pulls rate limits, call volume, and deprecations together, and applies the warning/throttle thresholds and standard report format that ad-hoc tool calls miss."
 allowed-tools: mcp__devtools__devtools_api_usage, mcp__devtools__devtools_app_list
 license: MIT
 ---
