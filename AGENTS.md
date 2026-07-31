@@ -8,13 +8,15 @@ A skills repository for AI coding agents that provides workflow-oriented guidanc
 
 ## How this repo is organized
 
-This repo is a **multi-plugin marketplace**. The marketplace manifest lives at the repo root (`.claude-plugin/marketplace.json`); each product group is a self-contained plugin under `plugins/<group>/`. Today there is one group, the **Developer Tools** plugin (`devtools`). To add another product group later, drop in a sibling `plugins/<group>/` and add an entry to `marketplace.json` — no restructuring.
+This repo is a **multi-plugin marketplace**. Two marketplace manifests live at the repo root — `.claude-plugin/marketplace.json` (Claude Code / Codex) and `.cursor-plugin/marketplace.json` (Cursor) — and each product group is a self-contained plugin under `plugins/<group>/`. Today there is one group, the **Developer Tools** plugin (`devtools`). To add another product group later, drop in a sibling `plugins/<group>/` and add an entry to both marketplace manifests — no restructuring.
 
 Each plugin (`plugins/devtools/`) contains:
 
 - `.claude-plugin/plugin.json` — Claude Code plugin manifest
+- `.cursor-plugin/plugin.json` — Cursor plugin manifest
 - `.codex-plugin/plugin.json` — Codex plugin manifest
-- `.mcp.json` — MCP server config, auto-bundled with the plugin
+- `.mcp.json` — MCP server config for Claude Code / Codex (auto-bundled with the plugin)
+- `mcp.json` — MCP server config for Cursor (auto-discovered at the plugin root)
 - `skills/<name>/SKILL.md` — the skills
 - `hooks/` — session hooks
 
@@ -25,7 +27,7 @@ Skills follow the open [Agent Skills standard](https://agentskills.io) (`SKILL.m
 All skills require the **Developer Tools MCP** server to be connected. This is a remote streamable-HTTP server (`https://mcp.facebook.com/devtools`). There is no standalone CLI — the skills drive the MCP for all their work, so it must be connected first.
 
 - **Claude Code**: `claude plugin marketplace add facebook/agentic-tools` then `claude plugin install devtools@facebook`; connect with `/mcp`. The MCP config is bundled in the plugin's `.mcp.json`.
-- **Cursor**: import via Settings → Rules → Add Rule → Remote Rule (GitHub), then enable the **Developer Tools MCP** (`devtools`) from Settings → MCP (config in `.cursor/mcp.json`).
+- **Cursor**: install the `devtools` plugin from the Cursor marketplace (or load it locally from `~/.cursor/plugins/local/` while testing). The plugin auto-discovers the skills and the **Developer Tools MCP** (`devtools`) from its bundled `mcp.json`; authenticate the MCP from Settings → MCP on first use.
 - **Codex**: install via `$skill-installer`, and add the MCP to `~/.codex/config.toml` (see README).
 
 ## Skill index
@@ -46,16 +48,21 @@ All skills require the **Developer Tools MCP** server to be connected. This is a
 ```
 .
 ├── .claude-plugin/
-│   └── marketplace.json         # Marketplace manifest (lists plugins by source)
+│   └── marketplace.json         # Claude Code / Codex marketplace manifest
+├── .cursor-plugin/
+│   └── marketplace.json         # Cursor marketplace manifest (lists plugins by source)
 ├── .cursor/
-│   └── mcp.json                 # Developer Tools MCP config for Cursor
+│   └── mcp.json                 # Developer Tools MCP config for manual Cursor setup
 ├── plugins/
 │   └── devtools/                # The Developer Tools plugin
 │       ├── .claude-plugin/
 │       │   └── plugin.json       # Claude Code plugin manifest
+│       ├── .cursor-plugin/
+│       │   └── plugin.json       # Cursor plugin manifest
 │       ├── .codex-plugin/
 │       │   └── plugin.json       # Codex plugin manifest
-│       ├── .mcp.json             # MCP server config (auto-bundled with plugin)
+│       ├── .mcp.json             # MCP config for Claude Code / Codex (auto-bundled)
+│       ├── mcp.json              # MCP config for Cursor (auto-discovered)
 │       ├── skills/
 │       │   ├── app-health-check/
 │       │   ├── webhook-setup/

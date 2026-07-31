@@ -26,10 +26,12 @@ Then connect the MCP server (its config is bundled with the plugin):
 
 ### Cursor
 
-Import the skills straight from GitHub:
+Install the **Developer Tools** plugin from the Cursor marketplace, then authenticate the MCP server:
 
-1. **Settings → Rules → Add Rule → Remote Rule (GitHub)**, and enter this repo's URL.
-2. Enable the remote **Developer Tools MCP** server (`devtools`): **Settings → MCP** (config in [`.cursor/mcp.json`](.cursor/mcp.json)), then authenticate.
+1. Open the Cursor marketplace and install the `devtools` plugin (published from this repo). The plugin bundles the skills and the **Developer Tools MCP** config.
+2. Authenticate the remote **Developer Tools MCP** server (`devtools`): **Settings → MCP**, then complete the OAuth flow.
+
+To try it before it's published, copy or symlink `plugins/devtools` to `~/.cursor/plugins/local/devtools`, then run **Developer: Reload Window**.
 
 ### Codex
 
@@ -66,16 +68,21 @@ Codex will run its OAuth flow on first use. Restart Codex after editing the conf
 ```
 agentic-tools/
 ├── .claude-plugin/
-│   └── marketplace.json         # Marketplace manifest (lists plugins by source)
+│   └── marketplace.json         # Claude Code / Codex marketplace manifest
+├── .cursor-plugin/
+│   └── marketplace.json         # Cursor marketplace manifest (lists plugins by source)
 ├── .cursor/
-│   └── mcp.json                 # Developer Tools MCP config for Cursor
+│   └── mcp.json                 # Developer Tools MCP config for manual Cursor setup
 └── plugins/
     └── devtools/                # The Developer Tools plugin
         ├── .claude-plugin/
         │   └── plugin.json       # Claude Code plugin manifest
+        ├── .cursor-plugin/
+        │   └── plugin.json       # Cursor plugin manifest
         ├── .codex-plugin/
         │   └── plugin.json       # Codex plugin manifest
-        ├── .mcp.json             # MCP server config (auto-bundled with the plugin)
+        ├── .mcp.json             # MCP config for Claude Code / Codex (auto-bundled)
+        ├── mcp.json              # MCP config for Cursor (auto-discovered)
         ├── skills/               # Skill definitions (SKILL.md per workflow)
         │   ├── app-health-check/
         │   ├── webhook-setup/
