@@ -1,7 +1,7 @@
 {
   "name": "devtools",
   "version": "0.1.0",
-  "description": "Workflow skills for the Meta Developer Tools MCP — app management, webhooks, compliance, app review, and API health monitoring on the Meta Developer Platform.",
+  "description": "Workflow skills for the Meta Developer Tools MCP — for developers building apps and integrations on the Meta Developer Platform (developers.facebook.com). Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health.",
   "skills": "./skills/",
   "author": {
     "name": "Meta Platforms, Inc."
@@ -9,7 +9,7 @@
   "license": "MIT",
   "interface": {
     "displayName": "Meta Developer Tools",
-    "shortDescription": "App management, webhooks, compliance, app review, and API health on the Meta Developer Platform.",
+    "shortDescription": "For developers on developers.facebook.com — manage the Meta apps you build: settings, webhooks, compliance, app review, and API health.",
     "category": "DevTools"
   }
 }

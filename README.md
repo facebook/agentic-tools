@@ -1,6 +1,6 @@
 # Agentic Tools
 
-This repo hosts the marketplace of workflow skills and plugins for the [Meta Developer Tools MCP](https://developers.facebook.com/documentation/mcp/devtools-mcp) — manage apps, webhooks, compliance, and app review on the Meta Developer Platform.
+This repo hosts the marketplace of workflow skills and plugins for the [Meta Developer Tools MCP](https://developers.facebook.com/documentation/mcp/devtools-mcp) — for developers building apps and integrations on the Meta Developer Platform (developers.facebook.com). Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health.
 
 > [!NOTE]
 > **Beta — v0.1.0 (first release).** The **Developer Tools MCP** and these skills are in **beta**: tool names, resources, and workflows may change between releases. Feedback and issues are very welcome.
