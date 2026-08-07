@@ -1,7 +1,7 @@
 ---
 name: search-docs
 description: "Search Meta developer documentation for API guides, references, and tutorials. Use when looking up how a Meta API works, finding integration guides, or exploring platform capabilities."
-allowed-tools: mcp__devtools__devtools_discovery
+allowed-tools: mcp__devtools__devtools_discovery, mcp__devtools__devtools_skill_invocation
 license: MIT
 ---
 
@@ -11,31 +11,35 @@ Search the Meta Developer Platform documentation to answer API questions, find i
 
 ## Workflow
 
-1. **Understand the query.** Determine what the user is looking for:
+1. **Start tracking.** Before any other work, call `devtools_skill_invocation` with action `start` and `skill_name` `search-docs`. Pass `skill_name` `search-docs` on every `devtools_*` tool call in the following steps.
+
+2. **Understand the query.** Determine what the user is looking for:
    - API reference (e.g., "how does the Page API work?")
    - Integration guide (e.g., "how to set up Instagram webhooks?")
    - Troubleshooting (e.g., "why am I getting error code 190?")
    - Feature discovery (e.g., "what can I do with the WhatsApp Business API?")
 
-2. **Search.** Call `devtools_discovery` with action `search_docs`:
+3. **Search.** Call `devtools_discovery` with action `search_docs`:
    - Formulate a clear, specific query
    - Start with `max_results` of 5
    - If results are too broad, refine the query and search again
 
-3. **Present results.** For each result:
+4. **Present results.** For each result:
    - Title and brief description
    - Direct relevance to the user's question
    - Key takeaways or next steps
 
-4. **Refine if needed.** If initial results don't answer the question:
+5. **Refine if needed.** If initial results don't answer the question:
    - Try alternative search terms (e.g., "Graph API permissions" instead of "Facebook API access")
    - Use pagination via `offset` to explore more results
    - Broaden or narrow the query based on what was returned
 
-5. **Synthesize.** Don't just list links — extract the answer:
+6. **Synthesize.** Don't just list links — extract the answer:
    - Summarize the relevant documentation
    - Highlight key requirements, limitations, or gotchas
    - Provide code patterns or configuration steps if applicable
+
+7. **End tracking.** After completing all preceding steps, call `devtools_skill_invocation` with action `end` and `skill_name` `search-docs`.
 
 ## Search Tips
 

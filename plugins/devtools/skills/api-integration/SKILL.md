@@ -1,7 +1,7 @@
 ---
 name: api-integration
 description: "Guide a developer through setting up a Meta API integration from scratch — discovers the right APIs, fetches setup guides, authentication requirements, permissions, and code examples. Use when the user wants to build with a specific Meta product (WhatsApp, Instagram, Messenger, Pages, Ads, etc.)."
-allowed-tools: mcp__devtools__devtools_discovery, mcp__devtools__devtools_app, mcp__devtools__devtools_app_review, mcp__devtools__devtools_app_list
+allowed-tools: mcp__devtools__devtools_discovery, mcp__devtools__devtools_app, mcp__devtools__devtools_app_review, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
 ---
 
@@ -11,7 +11,9 @@ Help a developer go from "I want to integrate with X" to having everything they 
 
 ## Workflow
 
-1. **Identify the integration.** Ask the user what they want to build if not clear. Common integrations:
+1. **Start tracking.** Before any other work, call `devtools_skill_invocation` with action `start` and `skill_name` `api-integration`. Pass `skill_name` `api-integration` on every `devtools_*` tool call in the following steps.
+
+2. **Identify the integration.** Ask the user what they want to build if not clear. Common integrations:
    - WhatsApp Business API (send/receive messages, templates, media)
    - Instagram Graph API (publish content, read insights, manage comments)
    - Messenger Platform (chatbots, send API, webhooks)
@@ -20,7 +22,7 @@ Help a developer go from "I want to integrate with X" to having everything they 
    - Login with Facebook / Login with Instagram
    - Facebook Login for Business
 
-2. **Research the integration.** Run multiple searches to build a complete picture. Do NOT stop at one search — layer queries to cover all aspects:
+3. **Research the integration.** Run multiple searches to build a complete picture. Do NOT stop at one search — layer queries to cover all aspects:
 
    **Search 1 — Overview and getting started:**
    - `devtools_discovery` → `search_docs` with the product name + "getting started" or "overview"
@@ -55,13 +57,13 @@ Help a developer go from "I want to integrate with X" to having everything they 
 
    Run searches 1-5 in parallel for speed. Run 6-7 after if needed. Use `max_results` of 10 and pagination via `offset` to get comprehensive results. Refine queries if initial results are too broad or miss key topics.
 
-3. **Check app readiness** (if the user has an app):
+4. **Check app readiness** (if the user has an app):
    - If they referred to the app by **name** (or aren't sure of the ID), resolve it to an `app_id` first via `devtools_app_list` (action `list`); if ambiguous, show the candidates (name, ID, viewer role) and ask them to pick
    - `devtools_app` → `basic_settings` to confirm app type and status
    - `devtools_app_review` → `privileges` to see what's already approved
    - `devtools_app_review` → `requirements` to see what's needed
 
-4. **Synthesize an integration guide.** Extract the key information from search results — do NOT dump raw results. Organize findings into an actionable document:
+5. **Synthesize an integration guide.** Extract the key information from search results — do NOT dump raw results. Organize findings into an actionable document:
 
    ### Guide Format
 
@@ -108,10 +110,12 @@ Help a developer go from "I want to integrate with X" to having everything they 
    - Product-specific gotchas the docs call out
    - Permission mistakes, token type confusion, webhook verification issues
 
-5. **Offer next steps:**
+6. **Offer next steps:**
    - `/app-review-prep` if permissions need App Review
    - `/webhook-setup` if the integration uses webhooks
    - `/api-health` to monitor usage once live
+
+7. **End tracking.** After completing all preceding steps, call `devtools_skill_invocation` with action `end` and `skill_name` `api-integration`.
 
 ## Tips
 

@@ -1,7 +1,7 @@
 ---
 name: debug-webhooks
 description: "Troubleshoot webhook issues for a Meta app — inspect active subscriptions, identify misconfiguration, and send test payloads to verify delivery. Use when webhooks aren't working as expected."
-allowed-tools: mcp__devtools__devtools_webhook_list, mcp__devtools__devtools_webhook_manage, mcp__devtools__devtools_webhook_test, mcp__devtools__devtools_app_list
+allowed-tools: mcp__devtools__devtools_webhook_list, mcp__devtools__devtools_webhook_manage, mcp__devtools__devtools_webhook_test, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
 ---
 
@@ -11,15 +11,17 @@ Diagnose and fix webhook delivery issues for a Meta app.
 
 ## Workflow
 
-1. **Get context.** Ask the user for:
+1. **Start tracking.** Before any other work, call `devtools_skill_invocation` with action `start` and `skill_name` `debug-webhooks`. Pass `skill_name` `debug-webhooks` on every `devtools_*` tool call in the following steps.
+
+2. **Get context.** Ask the user for:
    - The app **name or ID** — if they give a name (or aren't sure of the ID), resolve it to an `app_id` via `devtools_app_list` (action `list`); if several apps match or it's ambiguous, show the candidates (name, ID, viewer role) and ask the user to pick
    - What's going wrong (not receiving events? wrong data? specific topic?)
 
-2. **Inspect current state.** Run in parallel:
+3. **Inspect current state.** Run in parallel:
    - `devtools_webhook_list` with action `list_subscriptions` — all active subscriptions
    - `devtools_webhook_list` with action `list_topics` — all available topics (for comparison)
 
-3. **Diagnose.** Check for common issues:
+4. **Diagnose.** Check for common issues:
 
    **No subscriptions found**
    - The topic the user expects events from has no active subscription
@@ -38,11 +40,11 @@ Diagnose and fix webhook delivery issues for a Meta app.
    **Multiple subscriptions on same topic**
    - Flag potential conflicts or duplicate delivery
 
-4. **Test delivery.** For each relevant subscription:
+5. **Test delivery.** For each relevant subscription:
    - Call `devtools_webhook_test` with action `test_send`
    - Report whether the test payload was accepted by the callback endpoint
 
-5. **Report findings:**
+6. **Report findings:**
 
    ### Report Format
 
@@ -61,10 +63,12 @@ Diagnose and fix webhook delivery issues for a Meta app.
    **Recommended Actions**
    - Ordered list of fixes to apply
 
-6. **Apply fixes** if the user agrees:
+7. **Apply fixes** if the user agrees:
    - Add missing fields via `update_fields`
    - Remove unwanted fields via `update_fields`
    - **Callback URL changes: `update_fields` cannot change the callback URL — it has no `callback_url` parameter and silently ignores one. To change the URL, re-run `subscribe` for the topic with the new URL and verify token: `subscribe` is an upsert (create-or-update), so it overwrites the URL in place. You do NOT need to `unsubscribe` first.**
+
+8. **End tracking.** After completing all preceding steps, call `devtools_skill_invocation` with action `end` and `skill_name` `debug-webhooks`.
 
 ## Common Issues Reference
 

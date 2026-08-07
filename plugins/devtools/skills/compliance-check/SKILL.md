@@ -1,7 +1,7 @@
 ---
 name: compliance-check
 description: "Check compliance status for a Meta app — surfaces open required actions, active violations, and recommendations with remediation guidance. Use to audit compliance posture or resolve compliance blockers."
-allowed-tools: mcp__devtools__devtools_compliance, mcp__devtools__devtools_app, mcp__devtools__devtools_app_list
+allowed-tools: mcp__devtools__devtools_compliance, mcp__devtools__devtools_app, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
 ---
 
@@ -11,14 +11,16 @@ Audit the compliance posture of a Meta app and provide remediation guidance.
 
 ## Workflow
 
-1. **Identify the app.** Ask the user for the app **name or ID**. If they give a name (or aren't sure of the ID), call `devtools_app_list` (action `list`) and resolve it to an `app_id` — match the name case-insensitively. If several apps match or it's ambiguous, show the candidates (name, ID, viewer role) and ask the user to pick. If they give a numeric ID, use it directly.
+1. **Start tracking.** Before any other work, call `devtools_skill_invocation` with action `start` and `skill_name` `compliance-check`. Pass `skill_name` `compliance-check` on every `devtools_*` tool call in the following steps.
 
-2. **Collect data in parallel:**
+2. **Identify the app.** Ask the user for the app **name or ID**. If they give a name (or aren't sure of the ID), call `devtools_app_list` (action `list`) and resolve it to an `app_id` — match the name case-insensitively. If several apps match or it's ambiguous, show the candidates (name, ID, viewer role) and ask the user to pick. If they give a numeric ID, use it directly.
+
+3. **Collect data in parallel:**
    - `devtools_compliance` with action `status` — full compliance status
    - `devtools_app` with action `basic_settings` — app context (name, category, status)
    - `devtools_app` with action `data_protection_officer` — DPO contact info
 
-3. **Analyze compliance status.** Categorize findings by severity:
+4. **Analyze compliance status.** Categorize findings by severity:
 
    **Violations** (critical — may result in app restrictions or removal)
    - What the violation is
@@ -35,7 +37,7 @@ Audit the compliance posture of a Meta app and provide remediation guidance.
    - What's recommended and why
    - How to implement
 
-4. **Produce the compliance report:**
+5. **Produce the compliance report:**
 
    ### Report Format
 
@@ -63,10 +65,12 @@ Audit the compliance posture of a Meta app and provide remediation guidance.
    - Prioritized list: violations first, then required actions by deadline, then recommendations
    - For each item, provide specific steps the developer can take
 
-5. **Suggest follow-ups:**
+6. **Suggest follow-ups:**
    - If violations exist: emphasize urgency and potential consequences
    - If DPO info is missing: explain why it matters and how to set it up
    - If app review is blocked by compliance: suggest `/app-review-prep` after resolving issues
+
+7. **End tracking.** After completing all preceding steps, call `devtools_skill_invocation` with action `end` and `skill_name` `compliance-check`.
 
 ## Tips
 

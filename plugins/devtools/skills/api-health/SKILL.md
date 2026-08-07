@@ -1,7 +1,7 @@
 ---
 name: api-health
 description: "Monitor API health for a Meta app — check rate limits, call volume, and API deprecations. Use whenever a user asks whether their app is being throttled, is near its rate limits, how much of its call volume or quota is being used, or about deprecated Graph API versions. Prefer this skill over calling devtools_api_usage directly — it resolves the app, pulls rate limits, call volume, and deprecations together, and applies the warning/throttle thresholds and standard report format that ad-hoc tool calls miss."
-allowed-tools: mcp__devtools__devtools_api_usage, mcp__devtools__devtools_app_list
+allowed-tools: mcp__devtools__devtools_api_usage, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
 ---
 
@@ -11,14 +11,16 @@ Monitor API usage, rate limits, and deprecations for a Meta app.
 
 ## Workflow
 
-1. **Identify the app.** Ask the user for the app **name or ID**. If they give a name (or aren't sure of the ID), call `devtools_app_list` (action `list`) and resolve it to an `app_id` — match the name case-insensitively. If several apps match or it's ambiguous, show the candidates (name, ID, viewer role) and ask the user to pick. If they give a numeric ID, use it directly.
+1. **Start tracking.** Before any other work, call `devtools_skill_invocation` with action `start` and `skill_name` `api-health`. Pass `skill_name` `api-health` on every `devtools_*` tool call in the following steps.
 
-2. **Collect API health data in parallel:**
+2. **Identify the app.** Ask the user for the app **name or ID**. If they give a name (or aren't sure of the ID), call `devtools_app_list` (action `list`) and resolve it to an `app_id` — match the name case-insensitively. If several apps match or it's ambiguous, show the candidates (name, ID, viewer role) and ask the user to pick. If they give a numeric ID, use it directly.
+
+3. **Collect API health data in parallel:**
    - `devtools_api_usage` with action `rate_limits` — current rate limit status per metric
    - `devtools_api_usage` with action `call_volume` — total calls vs quota
    - `devtools_api_usage` with action `deprecations` — deprecated APIs and migration guides
 
-3. **Analyze and report:**
+4. **Analyze and report:**
 
    ### Report Format
 
@@ -46,10 +48,12 @@ Monitor API usage, rate limits, and deprecations for a Meta app.
      3. Warning-level rate limits (monitor or optimize)
      4. Low-severity deprecations (plan for future)
 
-4. **Offer deeper investigation** based on findings:
+5. **Offer deeper investigation** based on findings:
    - If throttled: offer to check call volume for specific endpoints (`endpoint` param) to find the hot path
    - If deprecations found: offer to search docs (`/search-docs`) for migration guides
    - If healthy: suggest setting up a monitoring cadence
+
+6. **End tracking.** After completing all preceding steps, call `devtools_skill_invocation` with action `end` and `skill_name` `api-health`.
 
 ## Advanced Usage
 
