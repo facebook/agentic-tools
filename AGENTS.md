@@ -42,6 +42,7 @@ All skills require the **Developer Tools MCP** server to be connected. This is a
 | api-health | `plugins/devtools/skills/api-health/` | Monitors API health — checks rate limits, call volume, and API deprecations with actionable thresholds. |
 | api-integration | `plugins/devtools/skills/api-integration/` | Guides a developer through setting up a new Meta API integration — discovers APIs, fetches setup guides, authentication, permissions, and code examples. |
 | search-docs | `plugins/devtools/skills/search-docs/` | Searches Meta developer documentation for API guides, references, and tutorials. |
+| debug-access-token | `plugins/devtools/skills/debug-access-token/` | Diagnoses an access token issue (expired, wrong scopes, wrong app, invalid) without the token ever entering the agent context — guides the developer to inspect it via the web debugger or `debug_token` API and interprets the returned metadata. |
 
 ## Directory structure
 
@@ -71,7 +72,8 @@ All skills require the **Developer Tools MCP** server to be connected. This is a
 │       │   ├── compliance-check/
 │       │   ├── api-health/
 │       │   ├── api-integration/
-│       │   └── search-docs/
+│       │   ├── search-docs/
+│       │   └── debug-access-token/
 │       └── hooks/                # Session hooks (+ session-context.json)
 ├── AGENTS.md                    # This file
 ├── CLAUDE.md                    # Symlink → AGENTS.md

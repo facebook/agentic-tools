@@ -31,3 +31,6 @@ Guide a developer through setting up a Meta API integration (WhatsApp, Instagram
 
 ### Search Docs
 Search Meta developer documentation with refined queries. Synthesize answers from results rather than just listing links.
+
+### Debug Access Token
+Diagnose why a Meta access token is failing (expired, wrong scopes, wrong app, invalid) without the raw token ever entering the agent or AI provider context. Guide the developer to inspect the token themselves via the Access Token Debugger web tool or the public debug_token Graph API, then interpret only the redacted metadata they bring back.

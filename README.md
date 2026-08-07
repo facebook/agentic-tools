@@ -62,6 +62,7 @@ Codex will run its OAuth flow on first use. Restart Codex after editing the conf
 | `/api-health` | API health monitoring — rate limits, call volume, and deprecation warnings |
 | `/api-integration` | Start a new API integration — fetches setup guides, auth, permissions, and code examples |
 | `/search-docs` | Search Meta developer documentation for API guides and references |
+| `/debug-access-token` | Diagnose an access token issue (expired, wrong scopes, wrong app, invalid) without the token ever entering the agent context |
 
 ## Architecture
 
@@ -91,7 +92,8 @@ agentic-tools/
         │   ├── compliance-check/
         │   ├── api-health/
         │   ├── api-integration/
-        │   └── search-docs/
+        │   ├── search-docs/
+        │   └── debug-access-token/
         └── hooks/
             ├── session-init.sh       # Session-start hook
             └── session-context.json  # Context injected at session start
