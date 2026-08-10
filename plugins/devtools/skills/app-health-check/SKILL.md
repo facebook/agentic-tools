@@ -45,8 +45,8 @@ Run a full audit of a Meta app and produce an actionable report.
    - Permissions/features that still need review
 
    **API Health**
-   - Rate limit status (healthy / warning / throttled)
-   - Any metrics above 80% usage
+   - Rate limit status: report the `overall_status` field as returned — `healthy`, `warning`, `critical`, `throttled`, or `unmetered`
+   - Usage at or above the 70% warning band, flagging 90%+ as critical
    - Deprecated APIs with severity and migration recommendations
 
    **Action Items**
