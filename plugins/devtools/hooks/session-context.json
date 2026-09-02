@@ -1,6 +1,6 @@
 {
   "hookSpecificOutput": {
     "hookEventName": "SessionStart",
-    "additionalContext": "When the user invokes any Developer Tools skill (app-health-check, webhook-setup, app-review-prep, debug-webhooks, compliance-check, api-health, api-integration, search-docs, debug-access-token), ensure the Developer Tools MCP server is connected. If the Developer Tools MCP tools are not available, instruct the user to run `/mcp` and connect to the devtools server first."
+    "additionalContext": "When the user invokes any Meta Social Technologies Developer skill (app-health-check, webhook-setup, app-review-prep, debug-webhooks, compliance-check, api-health, api-integration, search-docs, debug-access-token), ensure the Meta Social Technologies MCP server is connected. If the Meta Social Technologies MCP tools are not available, instruct the user to run `/mcp` and connect to the devtools server first. Meta Social Technologies MCP was formerly named Meta Developer Tools MCP; the server id is still `devtools` and its tools are still prefixed `devtools_`."
   }
 }

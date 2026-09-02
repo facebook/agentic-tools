@@ -4,11 +4,27 @@ This file helps AI agents navigate and use this repository effectively.
 
 ## What this repo is
 
-A skills repository for AI coding agents that provides workflow-oriented guidance for the **Meta Developer Platform**. Skills wrap the Developer Tools MCP server tools into higher-level workflows for app management, webhook configuration, compliance auditing, app review preparation, API health monitoring, and documentation search.
+A skills repository for AI coding agents that provides workflow-oriented guidance for the **Meta Social Technologies Developer Platform**. Skills wrap the Meta Social Technologies MCP server tools into higher-level workflows for app management, webhook configuration, compliance auditing, app review preparation, API health monitoring, and documentation search.
+
+## Naming
+
+These names are user-facing and easy to conflate. Use them exactly as written; do not invent variants.
+
+| Thing | Canonical name | Notes |
+|-------|----------------|-------|
+| This repo / marketplace | **Meta Agentic Tools** | `displayName` in both marketplace manifests. Docs headings use the shorter "Agentic Tools", since the `facebook/agentic-tools` repo path already supplies the "Meta". |
+| The plugin (`devtools`) | **Meta Social Technologies Developer** | Never append "plugin" to the name itself; write "the Meta Social Technologies Developer plugin". |
+| The platform | **Meta Social Technologies Developer Platform** | developers.facebook.com. Also known as "Meta for Developers: Social Technologies". Note the plugin name is a prefix of this one, so avoid using both in the same sentence. |
+| The MCP server | **Meta Social Technologies MCP** | Formerly "Meta Developer Tools MCP". Server id is still `devtools`; tools are still prefixed `devtools_`. |
+| The skills | kebab-case ids | `app-health-check`, `webhook-setup`, etc. No branding in skill names. |
+
+The plugin description is a single shared string, byte-identical across all five manifests. Change it in one place and propagate it to the other four.
+
+**`devtools` is a frozen identifier, not a name.** It is the plugin id, the MCP server key in every `mcp.json`, the `mcp__devtools__devtools_*` tool namespace in all nine skills' `allowed-tools`, the `plugins/devtools/` path, and the `devtools@facebook` install target. It is pinned to the MCP endpoint `https://mcp.facebook.com/devtools`, so it does not follow display-name changes. Renaming it breaks existing installs.
 
 ## How this repo is organized
 
-This repo is a **multi-plugin marketplace**. Two marketplace manifests live at the repo root — `.claude-plugin/marketplace.json` (Claude Code / Codex) and `.cursor-plugin/marketplace.json` (Cursor) — and each product group is a self-contained plugin under `plugins/<group>/`. Today there is one group, the **Developer Tools** plugin (`devtools`). To add another product group later, drop in a sibling `plugins/<group>/` and add an entry to both marketplace manifests — no restructuring.
+This repo is a **multi-plugin marketplace**. Two marketplace manifests live at the repo root — `.claude-plugin/marketplace.json` (Claude Code / Codex) and `.cursor-plugin/marketplace.json` (Cursor) — and each product group is a self-contained plugin under `plugins/<group>/`. Today there is one group, the **Meta Social Technologies Developer** plugin (`devtools`). To add another product group later, drop in a sibling `plugins/<group>/` and add an entry to both marketplace manifests — no restructuring.
 
 Each plugin (`plugins/devtools/`) contains:
 
@@ -24,10 +40,10 @@ Skills follow the open [Agent Skills standard](https://agentskills.io) (`SKILL.m
 
 ## MCP server dependency
 
-All skills require the **Developer Tools MCP** server to be connected. This is a remote streamable-HTTP server (`https://mcp.facebook.com/devtools`). There is no standalone CLI — the skills drive the MCP for all their work, so it must be connected first.
+All skills require the **Meta Social Technologies MCP** server to be connected — formerly named **Meta Developer Tools MCP**; the endpoint, the `devtools` plugin id, and the `devtools_` tool name prefix are unchanged. This is a remote streamable-HTTP server (`https://mcp.facebook.com/devtools`). There is no standalone CLI — the skills drive the MCP for all their work, so it must be connected first.
 
 - **Claude Code**: `claude plugin marketplace add facebook/agentic-tools` then `claude plugin install devtools@facebook`; connect with `/mcp`. The MCP config is bundled in the plugin's `.mcp.json`.
-- **Cursor**: install the `devtools` plugin from the Cursor marketplace (or load it locally from `~/.cursor/plugins/local/` while testing). The plugin auto-discovers the skills and the **Developer Tools MCP** (`devtools`) from its bundled `mcp.json`; authenticate the MCP from Settings → MCP on first use.
+- **Cursor**: install the `devtools` plugin from the Cursor marketplace (or load it locally from `~/.cursor/plugins/local/` while testing). The plugin auto-discovers the skills and the **Meta Social Technologies MCP** (`devtools`) from its bundled `mcp.json`; authenticate the MCP from Settings → MCP on first use.
 - **Codex**: install via `$skill-installer`, and add the MCP to `~/.codex/config.toml` (see README).
 
 ## Skill index
@@ -53,9 +69,9 @@ All skills require the **Developer Tools MCP** server to be connected. This is a
 ├── .cursor-plugin/
 │   └── marketplace.json         # Cursor marketplace manifest (lists plugins by source)
 ├── .cursor/
-│   └── mcp.json                 # Developer Tools MCP config for manual Cursor setup
+│   └── mcp.json                 # Meta Social Technologies MCP config for manual Cursor setup
 ├── plugins/
-│   └── devtools/                # The Developer Tools plugin
+│   └── devtools/                # The Meta Social Technologies Developer plugin
 │       ├── .claude-plugin/
 │       │   └── plugin.json       # Claude Code plugin manifest
 │       ├── .cursor-plugin/

@@ -5,7 +5,7 @@
     "name": "Meta Platforms, Inc."
   },
   "metadata": {
-    "description": "Workflow skills and plugins for developers building apps and integrations on the Meta Developer Platform (developers.facebook.com). Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health via the Developer Tools MCP.",
+    "description": "Meta's marketplace of agent plugins and skills for developers building apps and integrations on the Meta Social Technologies Developer Platform (developers.facebook.com).",
     "version": "0.1.0",
     "pluginRoot": "plugins"
   },
@@ -13,7 +13,7 @@
     {
       "name": "devtools",
       "source": "devtools",
-      "description": "Workflow skills for the Meta Developer Tools MCP — for developers building apps and integrations on the Meta Developer Platform (developers.facebook.com). Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health."
+      "description": "Guided workflows for developers building apps and integrations on the Meta Social Technologies Developer Platform (developers.facebook.com): settings, webhooks, compliance, app review, and API health. Requires the Meta Social Technologies MCP (formerly Meta Developer Tools MCP)."
     }
   ]
 }

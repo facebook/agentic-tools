@@ -1,13 +1,16 @@
 # Agentic Tools
 
-This repo hosts the marketplace of workflow skills and plugins for the [Meta Developer Tools MCP](https://developers.facebook.com/documentation/mcp/devtools-mcp) — for developers building apps and integrations on the Meta Developer Platform (developers.facebook.com). Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health.
+**Meta Agentic Tools** is Meta's marketplace of agent plugins and skills for developers building apps and integrations on the Meta Social Technologies Developer Platform (developers.facebook.com), also known as Meta for Developers: Social Technologies. Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health, via the [Meta Social Technologies MCP](https://developers.facebook.com/documentation/mcp/devtools-mcp).
 
 > [!NOTE]
-> **Beta — v0.1.0 (first release).** The **Developer Tools MCP** and these skills are in **beta**: tool names, resources, and workflows may change between releases. Feedback and issues are very welcome.
+> **Meta Social Technologies MCP was formerly known as Meta Developer Tools MCP.** The server endpoint, the `devtools` plugin id, and the `devtools_` tool name prefix are unchanged, so existing installs and client configurations keep working.
 
-This repo is structured as a **multi-plugin marketplace**: each product group ships as a self-contained plugin under `plugins/`, so it can host additional developer plugins alongside the first one, the **Developer Tools** plugin (`devtools`). The skills follow the open [Agent Skills standard](https://agentskills.io) (`SKILL.md`), so the same skills work in **Claude Code, Cursor, and Codex**.
+> [!NOTE]
+> **Beta — v0.1.0 (first release).** The **Meta Social Technologies MCP** and these skills are in **beta**: tool names, resources, and workflows may change between releases. Feedback and issues are very welcome.
 
-> All skills call the remote **Developer Tools MCP** server (`https://mcp.facebook.com/devtools`). There is no standalone CLI — the skills drive the MCP for all their work, so connect it after install.
+This repo is structured as a **multi-plugin marketplace**: each product group ships as a self-contained plugin under `plugins/`, so it can host additional developer plugins alongside the first one, the **Meta Social Technologies Developer** plugin (`devtools`). The skills follow the open [Agent Skills standard](https://agentskills.io) (`SKILL.md`), so the same skills work in **Claude Code, Cursor, and Codex**.
+
+> All skills call the remote **Meta Social Technologies MCP** server (`https://mcp.facebook.com/devtools`). There is no standalone CLI — the skills drive the MCP for all their work, so connect it after install.
 
 ## Installation
 
@@ -26,10 +29,10 @@ Then connect the MCP server (its config is bundled with the plugin):
 
 ### Cursor
 
-Install the **Developer Tools** plugin from the Cursor marketplace, then authenticate the MCP server:
+Install the `devtools` plugin from the Cursor marketplace, then authenticate the MCP server:
 
-1. Open the Cursor marketplace and install the `devtools` plugin (published from this repo). The plugin bundles the skills and the **Developer Tools MCP** config.
-2. Authenticate the remote **Developer Tools MCP** server (`devtools`): **Settings → MCP**, then complete the OAuth flow.
+1. Open the Cursor marketplace and install the `devtools` plugin (published from this repo). The plugin bundles the skills and the **Meta Social Technologies MCP** config.
+2. Authenticate the remote **Meta Social Technologies MCP** server (`devtools`): **Settings → MCP**, then complete the OAuth flow.
 
 To try it before it's published, copy or symlink `plugins/devtools` to `~/.cursor/plugins/local/devtools`, then run **Developer: Reload Window**.
 
@@ -41,7 +44,7 @@ Install the skills with the built-in installer, pointing it at this repo:
 $skill-installer
 ```
 
-Then add the **Developer Tools MCP** server to `~/.codex/config.toml`:
+Then add the **Meta Social Technologies MCP** server to `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.devtools]
@@ -73,9 +76,9 @@ agentic-tools/
 ├── .cursor-plugin/
 │   └── marketplace.json         # Cursor marketplace manifest (lists plugins by source)
 ├── .cursor/
-│   └── mcp.json                 # Developer Tools MCP config for manual Cursor setup
+│   └── mcp.json                 # Meta Social Technologies MCP config for manual Cursor setup
 └── plugins/
-    └── devtools/                # The Developer Tools plugin
+    └── devtools/                # The Meta Social Technologies Developer plugin
         ├── .claude-plugin/
         │   └── plugin.json       # Claude Code plugin manifest
         ├── .cursor-plugin/
@@ -99,7 +102,7 @@ agentic-tools/
             └── session-context.json  # Context injected at session start
 ```
 
-The Developer Tools MCP is a remote server — it is not bundled as a process; users authenticate it in their agent.
+The Meta Social Technologies MCP is a remote server — it is not bundled as a process; users authenticate it in their agent.
 
 ## License
 

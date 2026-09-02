@@ -7,7 +7,7 @@ license: MIT
 
 # Search Docs
 
-Search the Meta Developer Platform documentation to answer API questions, find integration guides, and explore platform capabilities.
+Search the Meta Social Technologies Developer Platform documentation to answer API questions, find integration guides, and explore platform capabilities.
 
 ## Workflow
 

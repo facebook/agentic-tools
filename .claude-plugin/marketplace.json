@@ -1,12 +1,13 @@
 {
   "name": "facebook",
+  "displayName": "Meta Agentic Tools",
   "owner": {
     "name": "Meta Platforms, Inc."
   },
   "plugins": [
     {
       "name": "devtools",
-      "description": "Workflow skills for the Meta Developer Tools MCP — for developers building apps and integrations on the Meta Developer Platform (developers.facebook.com). Manage the Meta apps you build there: settings, webhooks, compliance, app review, and API health.",
+      "description": "Guided workflows for developers building apps and integrations on the Meta Social Technologies Developer Platform (developers.facebook.com): settings, webhooks, compliance, app review, and API health. Requires the Meta Social Technologies MCP (formerly Meta Developer Tools MCP).",
       "version": "0.1.0",
       "author": {
         "name": "Meta Platforms, Inc."

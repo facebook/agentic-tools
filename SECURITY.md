@@ -10,7 +10,7 @@ Instead, please report security issues by emailing security@meta.com, or using t
 
 ## Scope
 
-This plugin is primarily skill definitions (structured prompts) that guide AI agents to use the Meta Developer Tools MCP server. The MCP server handles authentication and authorization independently. Agents are not given a shell by these skills, and no skill accepts a credential as input.
+This plugin is primarily skill definitions (structured prompts) that guide AI agents to use the Meta Social Technologies MCP server (formerly Meta Developer Tools MCP). The MCP server handles authentication and authorization independently. Agents are not given a shell by these skills, and no skill accepts a credential as input.
 
 One skill, `debug-access-token`, bundles a helper script (`scripts/debug_token_probe.py`) that **you** run in **your own** shell. It reads an access token and app secret from environment variables you set, calls the public `debug_token` Graph API, and prints only a redacted, non-PII subset of the response. The agent never executes it and never sees the credential values — only the redacted output you choose to share back.
 
