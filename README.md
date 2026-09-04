@@ -5,9 +5,6 @@
 > [!NOTE]
 > **Meta Social Technologies MCP was formerly known as Meta Developer Tools MCP.** The server endpoint, the `devtools` plugin id, and the `devtools_` tool name prefix are unchanged, so existing installs and client configurations keep working.
 
-> [!NOTE]
-> **Beta — v0.1.0 (first release).** The **Meta Social Technologies MCP** and these skills are in **beta**: tool names, resources, and workflows may change between releases. Feedback and issues are very welcome.
-
 This repo is structured as a **multi-plugin marketplace**: each product group ships as a self-contained plugin under `plugins/`, so it can host additional developer plugins alongside the first one, the **Meta Social Technologies Developer** plugin (`devtools`). The skills follow the open [Agent Skills standard](https://agentskills.io) (`SKILL.md`), so the same skills work in **Claude Code, Cursor, and Codex**.
 
 > All skills call the remote **Meta Social Technologies MCP** server (`https://mcp.facebook.com/devtools`). There is no standalone CLI — the skills drive the MCP for all their work, so connect it after install.

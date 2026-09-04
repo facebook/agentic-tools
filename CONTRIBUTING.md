@@ -1,6 +1,6 @@
 # Contributing to Agentic Tools
 
-This project is in early beta (v0.1.0). We're **not accepting external skill
+We're **not accepting external skill
 contributions yet**, but feedback is very welcome — please open a GitHub issue
 for bugs, suggestions, or skill ideas.
 
