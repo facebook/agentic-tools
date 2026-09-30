@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.facebook/devtools",
+  "title": "Meta Social Technologies MCP",
+  "description": "Manage Meta apps: creation, configuration, webhooks, permissions, compliance, and App Review.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/facebook/agentic-tools",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.facebook.com/devtools"
+    }
+  ]
+}
