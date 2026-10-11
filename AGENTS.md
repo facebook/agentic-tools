@@ -64,6 +64,10 @@ All skills require the **Meta Social Technologies MCP** server to be connected �
 
 ```
 .
+├── server.json                  # Public MCP registry listing (registry.modelcontextprotocol.io)
+├── .github/
+│   └── workflows/
+│       └── publish-mcp-registry.yml  # Publishes server.json to the registry via GitHub OIDC
 ├── .claude-plugin/
 │   └── marketplace.json         # Claude Code / Codex marketplace manifest
 ├── .cursor-plugin/
