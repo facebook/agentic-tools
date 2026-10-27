@@ -3,11 +3,22 @@ name: compliance-check
 description: "Check compliance status for a Meta app — surfaces open required actions, active violations, and recommendations with remediation guidance. Use to audit compliance posture or resolve compliance blockers."
 allowed-tools: mcp__devtools__devtools_compliance, mcp__devtools__devtools_app, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # Compliance Check
 
 Audit the compliance posture of a Meta app and provide remediation guidance.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 

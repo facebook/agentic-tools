@@ -3,11 +3,22 @@ name: search-docs
 description: "Search Meta developer documentation for API guides, references, and tutorials. Use when looking up how a Meta API works, finding integration guides, or exploring platform capabilities."
 allowed-tools: mcp__devtools__devtools_discovery, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # Search Docs
 
 Search the Meta Social Technologies Developer Platform documentation to answer API questions, find integration guides, and explore platform capabilities.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 

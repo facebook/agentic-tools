@@ -50,6 +50,38 @@ url = "https://mcp.facebook.com/devtools"
 
 Codex will run its OAuth flow on first use. Restart Codex after editing the config.
 
+## Install via Vercel (skills.sh)
+
+The skills are also listed on Vercel's skills directory, [skills.sh](https://skills.sh/facebook/agentic-tools), and install with the `skills` CLI into any agent it supports:
+
+```bash
+# A single skill
+npx skills add facebook/agentic-tools --skill <name>
+
+# All skills
+npx skills add facebook/agentic-tools --skill '*'
+```
+
+> [!WARNING]
+> This installs the skill text only. It does NOT install or authenticate the MCP server — you must add it separately, or the skills cannot run.
+
+Add the **Meta Social Technologies MCP** server to your agent's MCP config:
+
+```json
+{
+  "mcpServers": {
+    "devtools": {
+      "type": "streamable-http",
+      "url": "https://mcp.facebook.com/devtools"
+    }
+  }
+}
+```
+
+Then complete the OAuth flow in your own agent (for example `/mcp` in Claude Code), and restart or reload the agent if it does not pick up the new server.
+
+The skills live under `plugins/devtools/skills/` rather than a top-level `skills/` folder. If `npx skills add facebook/agentic-tools -l` reports no skills, name one with `--skill <name>` or pass `--full-depth`.
+
 ## Skills
 
 | Skill | Description |

@@ -3,11 +3,22 @@ name: app-review-prep
 description: "Prepare a Meta app for App Review — checks current status, outstanding requirements, granted privileges, and submission history. Use before submitting an app for review."
 allowed-tools: mcp__devtools__devtools_app_review, mcp__devtools__devtools_app, mcp__devtools__devtools_compliance, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # App Review Prep
 
 Check everything needed before submitting a Meta app for App Review.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 

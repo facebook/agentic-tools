@@ -3,11 +3,22 @@ name: api-health
 description: "Monitor API health for a Meta app — check rate limits, call volume, and API deprecations. Use whenever a user asks whether their app is being throttled, is near its rate limits, how much of its call volume or quota is being used, or about deprecated Graph API versions. Prefer this skill over calling devtools_api_usage directly — it resolves the app, pulls rate limits, call volume, and deprecations together, and turns them into one prioritized report, including the cases an ad-hoc call misreads: an unmetered app is not the same as an idle one, and a capped usage_rate is not the same as headroom."
 allowed-tools: mcp__devtools__devtools_api_usage, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # API Health
 
 Monitor API usage, rate limits, and deprecations for a Meta app.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 

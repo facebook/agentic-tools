@@ -3,6 +3,11 @@ name: debug-access-token
 description: "Diagnose a Meta access token problem (expired, wrong scopes, wrong app, invalid) WITHOUT the token ever entering the agent or AI provider context. Guides the developer to inspect the token themselves via the Access Token Debugger web tool or the public debug_token Graph API, then interprets the returned metadata. Use when an API call fails with an auth/OAuthException error (e.g. code 190) or a token isn't behaving as expected."
 allowed-tools: mcp__devtools__devtools_discovery
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # Debug Access Token
@@ -15,6 +20,12 @@ An access token is a bearer credential: whoever holds it can act as its owner. A
 
 1. **Do NOT ask the developer to paste an access token (or an app secret) into this chat.** Inspect tokens using the developer-run options below, and ask only for the resulting metadata.
 2. **If a token was already pasted**, tell the developer to **revoke/rotate it** (Graph API Explorer, or the app dashboard → regenerate), then continue with the metadata flow below using a fresh token.
+
+## Prerequisites — MCP connection (read first)
+
+The optional doc lookup in step 2 uses `devtools_discovery` on the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+If that tool is not available, skip the lookup rather than inventing results, and continue: the token diagnosis below does not need the MCP.
 
 ## Workflow
 

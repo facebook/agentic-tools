@@ -3,11 +3,22 @@ name: webhook-setup
 description: "Set up webhooks for a Meta app end-to-end — discover available topics, subscribe to fields, and verify with a test payload. Use when configuring webhooks for the first time or adding new subscriptions."
 allowed-tools: mcp__devtools__devtools_webhook_list, mcp__devtools__devtools_webhook_manage, mcp__devtools__devtools_webhook_test, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # Webhook Setup
 
 Interactive wizard to configure webhooks on a Meta app from scratch.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 

@@ -3,11 +3,22 @@ name: app-health-check
 description: "Run a comprehensive health check on a Meta app — audits settings, security, compliance, app review status, rate limits, and API deprecations in one pass. Use when you want a full picture of an app's current state."
 allowed-tools: mcp__devtools__devtools_app, mcp__devtools__devtools_app_review, mcp__devtools__devtools_compliance, mcp__devtools__devtools_api_usage, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # App Health Check
 
 Run a full audit of a Meta app and produce an actionable report.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 

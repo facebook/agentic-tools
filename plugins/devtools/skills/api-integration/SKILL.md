@@ -3,11 +3,22 @@ name: api-integration
 description: "Guide a developer through setting up a Meta API integration from scratch — discovers the right APIs, fetches setup guides, authentication requirements, permissions, and code examples. Use when the user wants to build with a specific Meta product (WhatsApp, Instagram, Messenger, Pages, Ads, etc.)."
 allowed-tools: mcp__devtools__devtools_discovery, mcp__devtools__devtools_app, mcp__devtools__devtools_app_review, mcp__devtools__devtools_app_list, mcp__devtools__devtools_skill_invocation
 license: MIT
+metadata:
+  mcp:
+    devtools:
+      type: streamable-http
+      url: "https://mcp.facebook.com/devtools"
 ---
 
 # API Integration
 
 Help a developer go from "I want to integrate with X" to having everything they need to start writing code.
+
+## Prerequisites — MCP connection (read first)
+
+This skill needs the Meta Social Technologies MCP server `devtools` (`https://mcp.facebook.com/devtools`, streamable-http). Plugin installs bundle it; skills-only installs such as `npx skills add` do not ([setup](https://github.com/facebook/agentic-tools#install-via-vercel-skillssh)).
+
+**If the `mcp__devtools__*` tools are not available, STOP.** Do not invent tool output, including the step 1 tracking call. Ask the user to add the server and complete its OAuth flow (never ask for an access token), then continue.
 
 ## Workflow
 
